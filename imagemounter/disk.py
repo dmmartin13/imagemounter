@@ -106,6 +106,7 @@ class Disk(object):
                 if disk_type == 'encase':
                     add_method_if_exists('ewfmount')
                 elif disk_type == 'vmdk':
+                    add_method_if_exists('guestmount')
                     add_method_if_exists('vmware-mount')
                     add_method_if_exists('affuse')
                 elif disk_type == 'dd':
@@ -198,7 +199,7 @@ class Disk(object):
                              ['ewfmount', self.paths[0], self.mountpoint]])
 
             elif method == 'guestmount':
-                cmds.extend([['guestmount', '-i', '-a ', self.paths[0], self.mountpoint]])
+                cmds.extend([['guestmount', '--ro', '-i', '-a ', self.paths[0], self.mountpoint]])
 
             elif method == 'vmware-mount':
                 cmds.append(['vmware-mount', '-r', '-f', self.paths[0], self.mountpoint])
