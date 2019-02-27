@@ -200,6 +200,7 @@ class Disk(object):
 
             elif method == 'guestmount':
                 cmds.extend([['guestmount', '--ro', '-i', '-a ', self.paths[0], self.mountpoint]])
+                self.disk_mounter = method
 
             elif method == 'vmware-mount':
                 cmds.append(['vmware-mount', '-r', '-f', self.paths[0], self.mountpoint])
@@ -249,6 +250,8 @@ class Disk(object):
         """
 
         if self.disk_mounter == 'dummy':
+            return self.paths[0]
+        elif self.disk_mounter == 'guestmount':
             return self.paths[0]
         else:
             if self.disk_mounter == 'avfs' and os.path.isdir(os.path.join(self.mountpoint, 'avfs')):
