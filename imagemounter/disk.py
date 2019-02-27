@@ -83,6 +83,8 @@ class Disk(object):
             return 'qcow2'
         elif _util.is_vbox(self.paths[0]):
             return 'vdi'
+        elif _util.is_vhdx(self.paths[0]):
+            return 'vhdx'
         else:
             return 'dd'
 
@@ -114,6 +116,8 @@ class Disk(object):
                     add_method_if_exists('qemu-nbd')
                 elif disk_type == 'vdi':
                     add_method_if_exists('qemu-nbd')
+                elif disk_type == 'vhdx':
+                    add_method_if_exists('guestmount')
                 add_method_if_exists('xmount')
         else:
             methods = [self.disk_mounter]
@@ -192,6 +196,9 @@ class Disk(object):
             elif method == 'ewfmount':
                 cmds.extend([['ewfmount', '-X', 'allow_other', self.paths[0], self.mountpoint],
                              ['ewfmount', self.paths[0], self.mountpoint]])
+
+            elif method == 'guestmount':
+                cmds.extend([['guestmount', '-i', '-a ', self.paths[0], self.mountpoint]])
 
             elif method == 'vmware-mount':
                 cmds.append(['vmware-mount', '-r', '-f', self.paths[0], self.mountpoint])

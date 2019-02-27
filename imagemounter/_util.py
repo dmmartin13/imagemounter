@@ -74,6 +74,8 @@ def is_qcow2(path):
 def is_vbox(path):
     return re.match(r'.*\.vdi', path)
 
+def is_vhdx(path):
+    return re.match(r'.*\.vhdx', path)
 
 def expand_path(path):
     """

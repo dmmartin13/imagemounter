@@ -29,7 +29,7 @@ setup(
     entry_points={'console_scripts': ['imount = imagemounter.cli.imount:main']},
     install_requires=['termcolor>=1.0.0'],
     extras={"magic": ["python-magic>=0.4"]},
-    keywords=['encase', 'aff', 'dd', 'disk image', 'ewfmount', 'affuse', 'xmount', 'imount'],
+    keywords=['encase', 'aff', 'dd', 'disk image', 'ewfmount', 'affuse', 'xmount', 'imount', 'guestmount'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',

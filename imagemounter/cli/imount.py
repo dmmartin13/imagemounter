@@ -159,9 +159,9 @@ def main():
         print(col("[-] {0} is not installed!".format(args.disk_mounter), 'red'))
         sys.exit(1)
     elif args.disk_mounter == 'auto' and not any(map(_util.command_exists, ('xmount', 'affuse', 'ewfmount', 'vmware-mount',
-                                                                            'avfsd'))):
+                                                                            'avfsd', 'guestmount'))):
         print(col("[-] No tools installed to mount the image base! Please install xmount, affuse (afflib-tools), "
-                  "ewfmount (ewf-tools), vmware-mount or avfs first.", 'red'))
+                  "ewfmount (ewf-tools), vmware-mount, guestmount (libguestfs-tools) or avfs first.", 'red'))
         sys.exit(1)
 
     # Check if detection method is available

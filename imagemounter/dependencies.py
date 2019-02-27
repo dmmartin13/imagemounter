@@ -235,6 +235,7 @@ affuse = CommandDependency("affuse", "afflib-tools", "AFF images (partially cove
 vmware_mount = CommandDependency("vmware-mount", why="VMWare disks")
 mountavfs = CommandDependency("mountavfs", "avfs", "compressed disk images")
 qemu_nbd = CommandDependency("qemu-nbd", "qemu-utils", "Qcow2 images")
+guestmount = CommandDependency("guestmount", "libguestfs-utils", "vhd/vhdx images")
 
 mmls = CommandDependency("mmls", "sleuthkit")
 pytsk3 = PythonModuleDependency("pytsk3")
@@ -260,7 +261,7 @@ photorec = CommandDependency("photorec", "photorec", "carving free space")
 
 mount_images = DependencySection(name="Mounting base disk images",
                                  description="at least one required, first three recommended",
-                                 deps=[xmount, ewfmount, affuse, vmware_mount, mountavfs, qemu_nbd])
+                                 deps=[xmount, ewfmount, affuse, vmware_mount, mountavfs, qemu_nbd, guestmount])
 
 detect_volumes = DependencySection(name="Detecting volumes and volume types",
                                    description="at least one required",
