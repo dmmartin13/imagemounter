@@ -199,7 +199,7 @@ class Disk(object):
                              ['ewfmount', self.paths[0], self.mountpoint]])
 
             elif method == 'guestmount':
-                cmds.extend([['guestmount', '--ro', '-i', '-a ', self.paths[0], self.mountpoint]])
+                cmds.extend([['guestmount', '--ro', '-i', '-a', self.paths[0], self.mountpoint]])
                 self.disk_mounter = method
 
             elif method == 'vmware-mount':
